@@ -20,6 +20,7 @@ this will be a great addition to the secure coding implementation. In addition, 
 1. After implementing unit tests, I feel relieved and proud to see my code working smoothly for all the features of creating the product, editing them, and also deleting them. The number of unit tests for a class may vary in my opinion depending on how much features does the class have.
 But, it should come to mind that the number of tests for the class should cover the majority of the crucial features that will often be used. By checking the crucial aspects it will further reassure that your codes will run as intended without any hindrance.
 <br>
-<br>
+
+
 2. If a new and additional test for checking number of items in the product list were to be added, it will surely increase the assurance and confirmation of your code is working smoothly. However, there is also a chance that it will reduce the code's cleanliness. Such as code duplication, creating another test case can lead to similar setups to other test cases. To reduce the chance of code duplication, a further enforcement and guidance to reuse codes by refactoring them time to time will be needed. Another example of reduction can be Inconsistent Naming. With the increase of cases additional naming of variables might be needed, and as those increases so as well the chance of creating Variable names that is not consistent or perhaps unreadable. A good way to reduce this is to reuse Variable names that already exist and add new ones if their functions does not exist yet while keeping clear functionality towards their name.
 
