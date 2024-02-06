@@ -13,11 +13,14 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
+
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ExtendWith(SeleniumJupiter.class)
 class HomePageFunctionalTest {
     @LocalServerPort
     private int serverPort;
+
+    private String test;
 
     @Value("${app.baseUrl:http://localhost}")
     private String testBaseUrl;
