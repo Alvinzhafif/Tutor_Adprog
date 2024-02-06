@@ -13,9 +13,10 @@ i also implemented Git flow by splitting the development into two seperate branc
 Another implementation i did was secure coding by making sure the output of the data in forms to not be filled irrationally. Improvements are still necessary to be made in the coming future, as currently there's no authentication nor authorization for the project 
 this will be a great addition to the secure coding implementation. In addition, further personal reminder to use git flow is needed for retrospection. Because currently, i am still in habbit of using a single branch which is main as the main branch for creating both the edit and delete function of the product list page
 
-<hr>
+<br>
 
 ### Reflection 2 / Exercise 2
+<hr>
 
 1. After implementing unit tests, I feel relieved and proud to see my code working smoothly for all the features of creating the product, editing them, and also deleting them. The number of unit tests for a class may vary in my opinion depending on how much features does the class have.
 But, it should come to mind that the number of tests for the class should cover the majority of the crucial features that will often be used. By checking the crucial aspects it will further reassure that your codes will run as intended without any hindrance.
