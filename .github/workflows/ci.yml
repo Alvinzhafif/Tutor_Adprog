@@ -9,6 +9,8 @@
       steps:
         - name: Check out the Git repository
           uses: actions/checkout@v4
+        - name: Set gradlew as executable
+          run: chmod +x ./gradlew
         - name: Set up Java toolchain
           uses: actions/setup-java@v4
           with:
@@ -17,5 +19,4 @@
             cache: "gradle"
         - name: Run unit tests
           run: ./gradlew test
-        - name: Set gradlew as executable
-          run: chmod +x ./gradlew
+
