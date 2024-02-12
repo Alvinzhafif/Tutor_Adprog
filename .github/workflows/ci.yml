@@ -17,3 +17,5 @@
             cache: "gradle"
         - name: Run unit tests
           run: ./gradlew test
+        - name: Set gradlew as executable
+          run: chmod +x ./gradlew
