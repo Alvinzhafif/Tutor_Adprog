@@ -16,6 +16,7 @@ public class ProductRepository {
         return product;
     }
 
+
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
@@ -25,12 +26,17 @@ public class ProductRepository {
     }
 
     public Product editProduct(Product product) {
-        for (int i=0; i < productData.size(); i++) {
+        if (product.getProductQuantity() < 0) {
+            throw new IllegalArgumentException("Product quantity cannot be negative");
+        }
+
+        for (int i = 0; i < productData.size(); i++) {
             Product item = productData.get(i);
             if (item.getProductId().equals(product.getProductId())) {
                 return productData.set(i, product);
             }
         }
-        return null;
+
+        return product;
     }
 }

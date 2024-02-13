@@ -5,7 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.Mockito.*;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Iterator;
@@ -17,10 +19,27 @@ public class ProductRepositoryTest {
 
     @InjectMocks
     ProductRepository productRepository;
+
+    @Mock
+    Product productDao;
+
     @BeforeEach
     void setUp(){
 
     }
+    @Test
+    void testEditProductWithNegativeQuantity() {
+        // Set up a product with a negative quantity
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(-10);
+
+
+        // Call the editProduct method of productRepository and assert that it throws an IllegalArgumentException
+        assertThrows(IllegalArgumentException.class, () -> productRepository.editProduct(product));
+    }
+
     @Test
     void testCreateAndFind(){
         Product product = new Product();
@@ -53,7 +72,7 @@ public class ProductRepositoryTest {
 
         Product product2 = new Product();
         product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product2.setProductName("Sampo Cap Usep");
+        product2.setProductName("Sampo Cap Piccolo");
         product2.setProductQuantity(50);
         productRepository.create(product2);
 
