@@ -25,3 +25,12 @@ But, it should come to mind that the number of tests for the class should cover 
 
 2. If a new and additional test for checking number of items in the product list were to be added, it will surely increase the assurance and confirmation of your code is working smoothly. However, there is also a chance that it will reduce the code's cleanliness. Such as code duplication, creating another test case can lead to similar setups to other test cases. To reduce the chance of code duplication, a further enforcement and guidance to reuse codes by refactoring them time to time will be needed. Another example of reduction can be Inconsistent Naming. With the increase of cases additional naming of variables might be needed, and as those increases so as well the chance of creating Variable names that is not consistent or perhaps unreadable. A good way to reduce this is to reuse Variable names that already exist and add new ones if their functions does not exist yet while keeping clear functionality towards their name.
 
+<br>
+
+### Reflection 3 / Exercise 3
+
+<hr>
+
+1. I fixed and improved the code quality by adding new test cases in my project, I added those new test cases in some aspects. Such as the Product Controller, Product Service, and the Application itself. Those additional test include a test for edit product, delete product, create product, and also find products. Additional test cases for multiple products are also given on some occasions for ensuring each and every function is tested and covered correctly. Overall, the additional test has help my code to get a code coverage of 96% in jacoco testing.
+2. CI/CD stands for Continuous Integration and Continuous Deployment, it is a set of practises and tools to integrate code changes in a shared repository and automatically delivers the change to the production or deployment. I believe my code has illustrated CI/CD very well, although it may not be a telling example as I have not fully implemented CI in the early parts of the development.
+    I believed my code has illustrated CI because I have integrated my development into several branches each with their own functionality such as one for developing the product list, then another for unit testing, another one for functional testing, etc. I also believe i have implement and illustrated CD through direct deployment on push changes to the main branch, as for the deployment I currently use **Koyeb**.
