@@ -31,19 +31,19 @@ class ProductServiceImplTest {
         MockitoAnnotations.initMocks(this);
 
         List<Product> productList = new ArrayList<>();
-        Product product1 = new Product();
-        product1.setProductId("1");
-        product1.setProductName("Product 1");
+        Product product1 = new ConcreteProduct();
+        product1.setId("1");
+        product1.setName("Product 1");
         productList.add(product1);
 
-        Product product2 = new Product();
-        product2.setProductId("2");
-        product2.setProductName("Product 2");
+        Product product2 = new ConcreteProduct();
+        product2.setId("2");
+        product2.setName("Product 2");
         productList.add(product2);
 
-        Product product3 = new Product();
-        product3.setProductId("3");
-        product3.setProductName("Product 3");
+        Product product3 = new ConcreteProduct();
+        product3.setId("3");
+        product3.setName("Product 3");
         productList.add(product3);
 
 
@@ -52,15 +52,15 @@ class ProductServiceImplTest {
 
     @Test
     void testCreate() {
-        Product product = new Product();
+        ConcreteProduct product = new ConcreteProduct();
         product.setProductName("Test Product");
 
         when(productRepository.create(product)).thenReturn(product);
 
         Product createdProduct = productService.create(product);
 
-        assertNotNull(createdProduct.getProductId());
-        assertEquals(product.getProductName(), createdProduct.getProductName());
+        assertNotNull(createdProduct.getId());
+        assertEquals(product.getProductName(), createdProduct.getName());
 
         verify(productRepository, times(1)).create(product);
     }
@@ -74,16 +74,16 @@ class ProductServiceImplTest {
         Product result4 = productService.getId("4"); // Non-existing ID
 
         // Assert the results
-        assertEquals("Product 1", result1.getProductName());
-        assertEquals("Product 2", result2.getProductName());
-        assertEquals("Product 3", result3.getProductName());
+        assertEquals("Product 1", result1.getName());
+        assertEquals("Product 2", result2.getName());
+        assertEquals("Product 3", result3.getName());
         assertNull(result4); // No product found for ID "4"
     }
     @Test
     void testCreateAndFind(){
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
+        Product product = new ConcreteProduct();
+        product.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setName("Sampo Cap Bambang");
         Product prodRep = productRepository.create(product);
 
     }
@@ -91,8 +91,8 @@ class ProductServiceImplTest {
     @Test
     void testFindAll() {
         List<Product> productList = new ArrayList<>();
-        productList.add(new Product());
-        productList.add(new Product());
+        productList.add(new ConcreteProduct());
+        productList.add(new ConcreteProduct());
 
         when(productRepository.findAll()).thenReturn(productList.iterator());
 
@@ -112,9 +112,9 @@ class ProductServiceImplTest {
     @Test
     void testEditProduct() {
 
-        Product mockProduct = new Product();
-        mockProduct.setProductId("123");
-        mockProduct.setProductName("Mock Product");
+        ConcreteProduct mockProduct = new ConcreteProduct();
+        mockProduct.setId("123");
+        mockProduct.setName("Mock Product");
 
 
         when(productRepository.editProduct(mockProduct)).thenReturn(mockProduct);
@@ -123,8 +123,8 @@ class ProductServiceImplTest {
         Product editedProduct = productService.editProduct(mockProduct);
 
         assertNotNull(editedProduct);
-        assertEquals("123", editedProduct.getProductId());
-        assertEquals("Mock Product", editedProduct.getProductName());
+        assertEquals("123", editedProduct.getId());
+        assertEquals("Mock Product", editedProduct.getName());
 
 
         verify(productRepository, times(1)).editProduct(mockProduct);
@@ -133,10 +133,10 @@ class ProductServiceImplTest {
     @Test
     void testDeleteProduct() {
 
-        Product product = new Product();
-        product.setProductId("1");
-        product.setProductName("Product 1");
-        product.setProductQuantity(10);
+        Product product = new ConcreteProduct();
+        product.setId("1");
+        product.setName("Product 1");
+        product.setQuantity(10);
 
 
         productRepository.create(product);

@@ -1,11 +1,14 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
-import lombok.Getter;
-import lombok.Setter;
+// Define a Product interface
+public interface Product {
+    String getId();
+    void setId(String productId);
 
-@Getter @Setter
-public class Product {
-    private String productId;
-    private String productName;
-    private int productQuantity;
+    String getName();
+    void setName(String productName);
+
+    int getQuantity();
+    void setQuantity(int productQuantity);
 }
+

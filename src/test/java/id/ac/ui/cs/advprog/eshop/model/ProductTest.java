@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductTest {
-    Product product;
+    ConcreteProduct product;
 
     @BeforeEach
     void setup() {
-        this.product = new Product();
+        this.product = new ConcreteProduct();
         this.product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         this.product.setProductName("Sampo Cap Bambang");
         this.product.setProductQuantity(100);
@@ -23,12 +23,12 @@ public class ProductTest {
 
     @Test
     void testGetProductName() {
-        assertEquals("Sampo Cap Bambang", this.product.getProductName());
+        assertEquals("Sampo Cap Bambang", this.product.getName());
     }
 
     @Test
     void testGetProductQuantity() {
-        assertEquals(100, this.product.getProductQuantity());
+        assertEquals(100, this.product.getQuantity());
     }
 
     // Additional test cases to improve coverage
@@ -43,15 +43,15 @@ public class ProductTest {
     @Test
     void testSetProductName() {
         String newProductName = "New Product Name";
-        this.product.setProductName(newProductName);
-        assertEquals(newProductName, this.product.getProductName());
+        this.product.setName(newProductName);
+        assertEquals(newProductName, this.product.getName());
     }
 
     @Test
     void testSetProductQuantity() {
         int newQuantity = 50;
-        this.product.setProductQuantity(newQuantity);
-        assertEquals(newQuantity, this.product.getProductQuantity());
+        this.product.setQuantity(newQuantity);
+        assertEquals(newQuantity, this.product.getQuantity());
     }
 }
 

@@ -9,9 +9,9 @@ import java.util.UUID;
 @Repository
 public class CarRepository {
 
-    static int id = 0;
+    static int id = 0;;
 
-    private List<Car> carData = new ArrayList<>();
+    CarRepositoryRead repository = new CarRepositoryRead();
 
     public Car create(Car car){
         if(car.getCarId() == null){
@@ -19,15 +19,15 @@ public class CarRepository {
             car.setCarId(uuid.toString());
 
         }
-        carData.add(car);
+        repository.carData.add(car);
         return car;
     }
     public Iterator<Car> findAll(){
-        return carData.iterator();
+        return repository.carData.iterator();
     }
 
     public Car findById(String id){
-        for (Car car: carData){
+        for (Car car: repository.carData){
             if (car.getCarId().equals(id)){
                 return car;
             }
@@ -36,8 +36,8 @@ public class CarRepository {
     }
 
     public Car update(String id, Car updatedCar){
-        for(int i = 0; i < carData.size(); i++){
-            Car car = carData.get(i);
+        for(int i = 0; i < repository.carData.size(); i++){
+            Car car = repository.carData.get(i);
             if(car.getCarId().equals(id)){
                 car.setCarName(updatedCar.getCarName());
                 car.setCarColor(updatedCar.getCarColor());
@@ -48,6 +48,6 @@ public class CarRepository {
         return null;
     }
     public void delete(String id){
-        carData.removeIf(car -> car.getCarId().equals(id));
+        repository.carData.removeIf(car -> car.getCarId().equals(id));
     }
 }

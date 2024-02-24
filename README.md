@@ -1,8 +1,10 @@
 # Reflection 
 <hr>
 
-### Name: Alvin Zhafif Afilla
-### NPM: 2206046632
+## Name: Alvin Zhafif Afilla
+## NPM: 2206046632
+
+## MODULE 1
 ### Reflection 1 / Exercise 1 
 <hr>
 
@@ -27,10 +29,32 @@ But, it should come to mind that the number of tests for the class should cover 
 
 <br>
 
-### Reflection 3 / Exercise 3
+## MODULE 2
+### Reflection 1 / Exercise 1
 
 <hr>
 
 1. I fixed and improved the code quality by adding new test cases in my project, I added those new test cases in some aspects. Such as the Product Controller, Product Service, and the Application itself. Those additional test include a test for edit product, delete product, create product, and also find products. Additional test cases for multiple products are also given on some occasions for ensuring each and every function is tested and covered correctly. Overall, the additional test has help my code to get a code coverage of 96% in jacoco testing.
 2. CI/CD stands for Continuous Integration and Continuous Deployment, it is a set of practises and tools to integrate code changes in a shared repository and automatically delivers the change to the production or deployment. I believe my code has illustrated CI/CD very well, although it may not be a telling example as I have not fully implemented CI in the early parts of the development.
     I believed my code has illustrated CI because I have integrated my development into several branches each with their own functionality such as one for developing the product list, then another for unit testing, another one for functional testing, etc. I also believe i have implement and illustrated CD through direct deployment on push changes to the main branch, as for the deployment I currently use **Koyeb**.
+
+
+## MODULE 3
+### Reflection 1 / Exercise 1
+
+<hr>
+
+1. For this project I implemented a few SOLID principles, Here are the list of the principles I applied alongside which feature it is implemented to:
+    * (S) Single Responsibility Principle:
+        <br>
+    For implementing this, I choose to once again head back to my `repository` folder. And here I found out that both of car repository and product repository class has CRUD methods in a single class.
+    So I made two new classes for reading the create, delete, update of product model. I named it `ProductRepositoryRead`. Then, I made another one for the car model that will be used for reading the create, update, and delete operation done on the car model. I named it `CarRepositoryRead`.
+    * (O) Open / Closed Principle:
+   <br>
+   For implementing this, I went back into my `controller` folder, after creating `CarController` both classes are set so that they are open to extension or modifications. This can be done by extending the currently available classes, without the need of altering the previously existing codes.
+    *  (I) Interface Segregation Principle.
+    <br>
+    For implementing this, I reviewed my `Model` folder, after implementing `Car` model I realized that there are similarities to the `Product` model. So, i made an interface named `Product` and used it for defining the set of methods that both class will implement. Then, I renamed the `Product` class to `ConcreteProduct` and added the methods defined in the interface to both of the model classes. There maybe additional methods for car as it has `carColor`, but that will be implemented directly on the `Repository` and `Service` classes.
+    * (D) Dependecy Inversion Principle:
+   For implementing this, I look over the `ProductController` class I made before. After making a few changes along with the changes of the `repository` folder, the `ProductController` now depends on `service` which makes it dependent on the abstraction (interface) rather than the concrete class. This will also ease maintenance and extension, as changes or updates can be made from the `ProductService` interface. `CarController` also implements this as it is relying on the `CarService` interface.
+2. 

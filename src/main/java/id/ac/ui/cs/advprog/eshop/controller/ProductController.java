@@ -2,6 +2,7 @@ package id.ac.ui.cs.advprog.eshop.controller;
 
 import com.sun.java.accessibility.util.AccessibilityListenerList;
 import id.ac.ui.cs.advprog.eshop.model.Car;
+import id.ac.ui.cs.advprog.eshop.model.ConcreteProduct;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.service.CarServiceImpl;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
@@ -21,13 +22,13 @@ public class ProductController {
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
-        Product product = new Product();
+        Product product = new ConcreteProduct();
         model.addAttribute("product", product);
         return "CreateProduct";
     }
 
     @PostMapping("/create")
-    public String createProductPost(@ModelAttribute Product product, Model model) {
+    public String createProductPost(@ModelAttribute ConcreteProduct product, Model model) {
         service.create(product);
         return "redirect:list";
     }
@@ -46,7 +47,7 @@ public class ProductController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Product product) {
+    public String edit(@ModelAttribute ConcreteProduct product) {
         service.editProduct(product);
         return "redirect:list";
     }
