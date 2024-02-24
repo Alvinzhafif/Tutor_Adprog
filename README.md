@@ -52,7 +52,7 @@ But, it should come to mind that the number of tests for the class should cover 
     * (O) Open / Closed Principle:
       <br>
    For implementing this, I went back into my `controller` folder, after creating `CarController` both classes are set so that they are open to extension or modifications. This can be done by extending the currently available classes, without the need of altering the previously existing codes.
-    *  (I) Interface Segregation Principle.
+    *  (I) Interface Segregation Principle:
       <br>
     For implementing this, I reviewed my `Model` folder, after implementing `Car` model I realized that there are similarities to the `Product` model. So, i made an interface named `Product` and used it for defining the set of methods that both class will implement. Then, I renamed the `Product` class to `ConcreteProduct` and added the methods defined in the interface to both of the model classes. There maybe additional methods for car as it has `carColor`, but that will be implemented directly on the `Repository` and `Service` classes.
     * (D) Dependecy Inversion Principle:
