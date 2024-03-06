@@ -57,4 +57,85 @@ But, it should come to mind that the number of tests for the class should cover 
     * (D) Dependecy Inversion Principle:
    For implementing this, I look over the `ProductController` class I made before. After making a few changes along with the changes of the `repository` folder, the `ProductController` now depends on `service` which makes it dependent on the abstraction (interface) rather than the concrete class. This will also ease maintenance and extension, as changes or updates can be made from the `ProductService` interface. `CarController` also implements this as it is relying on the `CarService` interface.
 2. An advantage of applying solid can be taken from what the implementation on the `model` folder that I did. The advantage of implementing this changes is that now there is flexibility. For instance, when new types of products are going to be added the existing code would not need to be modified as both `Car` and `ConcreteProduct` are now part of the `Product` Interface. Another advantage is when it comes to testing, we can depend on the interface instead, this will reduce the difficulty to mock dependencies in the unit test.
-3. The disadvantages of not applying that feature is that, we will have harder times making the unit tests. Because, we will be calling the concrete classes itself which makes it both redundant and tiring. Another disadvantage is that redundant codes can happen, making the same method for different classes can be redundant especially when in the long-term plans when we will decide to add more model classes. 
+3. The disadvantages of not applying that feature is that, we will have harder times making the unit tests. Because, we will be calling the concrete classes itself which makes it both redundant and tiring. Another disadvantage is that redundant codes can happen, making the same method for different classes can be redundant especially when in the long-term plans when we will decide to add more model classes.
+
+## MODULE 4
+### Reflection 1
+
+<hr>
+
+1. **Do I have enough functional tests to reassure myself that my application really works, from the point of view of the user?**
+<br>
+<br>
+The answer is no. For this test series as a matter of fact, there are no functional tests. Hence, all tests are in a form of a simulation for the program itself. Due to the test not being a functional test, there is no clear signs that the application will work perfectly in the user's prespective. In the near future, perhaps it's best to implement the controller and web page of the class so it's functionality can actually be tested.
+<br>
+<br>
+**Am I testing all the edge cases thoroughly?**
+<br>
+<br>
+I believe the test should already cover every part of the code thoroughly, including the classes services. Furthermore, if there were to be any doubt in cases where the method hasn't been covered yet, Jacoco test for code coverage can be used. In my case, the jacoco test should cover the necessity of the recently implemented features of both the exercise `payment` and tutorial's `order` feature. The test percentage overall is not that good but that came from my implementation of solid previously in `Module 3`.
+<br>
+<br>
+**Do I have tests that check whether all my components fit together properly? Could some integrated tests do this, or are functional tests enough?**
+<br>
+<br>
+I believe some of the unit test can check all the classes functionality in a single test. For instance one of the `order` test involves in calling the `model`,`service`, and the `repository`. An example, is the `testFindAllByAuthor` test, in the test for `OrderService` . However, it might be true that if we wish to see if the feature is working properly making the `controller` and functional test is necessary.
+<br>
+<br>
+**Are my tests giving me the confidence to refactor my code, fearlessly and frequently?**
+<br>
+<br>
+Yes after the tests and its respective `model` or `service` is implemented, I believed that my tests can be furthermore improved. By improving the naming convention and changing any redundancy in the test can make my tests more efficient and clearer to the eyes. As compared to before refactoring it's jumbled and the purpose of each test is not defined properly/
+<br>
+<br>
+**Are my tests helping me to drive out a good design? If I have a lot of integration tests but less unit tests, do I need to make more unit tests to get better feedback on my code design?**
+<br>
+<br>
+For this module, most of the allocation of tests goes to the unit tests. So i believed, that every inch of codes whether it's for the `repository`, `model`, or `service` must have already been covered. However if there are lacking cases, `Jacoco` can help me pinpoint the part I have not implemented through its test report.
+<br>
+<br>
+**Are my feedback cycles as fast as I would like them? When do I get warned about bugs, and is there any practical way to make that happen sooner?**
+<br>
+<br>
+When implementing TDD, the test cases are made beforehand. Hence, I can picture better how each test cases are layered out and of course the functionality of the `model`, `service`, or `repository` to come. Compared before TDD, bug warnings comes after the making of test cases hence it can be way sooner than expected.
+<br>
+<br>
+**Is there some way that I could write faster integration tests that would get me feedback quicker?**
+<br>
+<br>
+I don't think I implemented an Integration Test in this module. However, if that problem should arise in the future, I think it would be best to make the test more centralized to the specification of the test itself. Including its respective necessary methods, if perhaps it uses more than one method that belongs to different classes, an interface can be used.
+<br>
+<br>
+**Can I run a subset of the full test suite when I need to?**
+<br>
+<br>
+Yes. Reminiscing TDD, I have separated each test into different folders. These folders are grouped by the specific class of the code I wanted to test, Hence for instance I wanted to test my `models`, I can simply run the tests located inside the `model` folder.
+<br>
+<br>
+**Am I spending too much time waiting for tests to run, and thus less time in a productive flow state?**
+<br>
+<br>
+No not really, the tests are evenly distributed and all the tests should be finished in less than 6 seconds. However, in the coming projects where there will be many more classes, perhaps a different form of approach will be better. Such as auto testing from the GitHub itself.
+
+<br>
+
+2. **Has my unit tests implemented F.I.R.S.T.?**
+<br>
+**F) Fast**
+<br>
+Yes, it should not take more than 6 seconds to successfully run all test cases that I made.
+<br>
+**I) Isolated**
+<br>
+Yes, the condition of each test isn't dependent on other tests. It may use multiple methods of different classes but a test would not affect other tests
+<br>
+**R) Repeatable**
+<br>
+Yes, since each test is isolated as mentioned before. This will make each test be repeatable as every method used is set up a new everytime the test is runned again.
+<br>
+**S) Self-Validating**
+<br>
+Yes, each test has an assert case. This validates whether the expected output is the same as what it is intended to be. For a happy test case it will return true or according to the expected function, while for unhappy it should return the opposite.
+<br>
+**T) Thoroughly/Timely**
+Yes, each test has been implemented thoroughly. This is furthermore proved by the reports produced from the jacoco test as it returns a code coverage greater than 95% for the new features. This means that each part of the test case should already cover the functionality and code of the feature itself.
