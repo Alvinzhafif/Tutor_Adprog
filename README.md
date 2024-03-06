@@ -63,7 +63,8 @@ But, it should come to mind that the number of tests for the class should cover 
 ### Reflection 1
 
 <hr>
-1. Reflect Based on Percival
+
+1. **Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”),**
 <br>
 
 **Do I have enough functional tests to reassure myself that my application really works, from the point of view of the user?**
