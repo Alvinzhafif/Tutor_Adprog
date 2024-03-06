@@ -30,7 +30,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         Payment payment = paymentRepository.findById(paymentId);
         if (payment != null) {
-            payment.setStatus(status);
+            payment.setPaymentStatus(status);
             paymentRepository.save(payment);
         } else {
             throw new IllegalArgumentException("Payment not found with id: " + paymentId);

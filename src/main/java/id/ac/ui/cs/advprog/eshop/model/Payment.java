@@ -5,30 +5,30 @@ import lombok.Setter;
 import java.util.Map;
 
 public class Payment {
-    private String id;
-    private String method;
+    private String paymentId;
+    private String paymentMethod;
     @Setter
-    private String status;
+    private String paymentStatus;
     private Map<String, String> paymentData;
 
 
     public Payment(String id, String method, Map<String, String> paymentData, String status) {
-        this.id = id;
-        this.method = method;
+        this.paymentId = id;
+        this.paymentMethod = method;
         this.paymentData = paymentData;
-        this.status = status;
+        this.paymentStatus = status;
     }
 
     public String getId() {
-        return id;
+        return paymentId;
     }
 
     public String getMethod() {
-        return method;
+        return paymentMethod;
     }
 
     public String getStatus() {
-        return status;
+        return paymentStatus;
     }
 
     public Map<String, String> getPaymentData() {

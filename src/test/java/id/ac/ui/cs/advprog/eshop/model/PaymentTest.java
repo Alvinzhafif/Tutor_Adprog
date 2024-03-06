@@ -33,7 +33,7 @@ public class PaymentTest{
         Map<String, String> newData = new HashMap<>();
         newData.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment = new Payment("eb558e9f-1c39-460e-8860-71af6af63bd6", "voucherCode", newData, "SUCCESS");
-        payment.setStatus("SUCCESS");
+        payment.setPaymentStatus("SUCCESS");
         assertEquals("eb558e9f-1c39-460e-8860-71af6af63bd6", payment.getId());
         assertEquals("ESHOP1234ABC5678", voucherData.get("voucherCode"));
         assertEquals("voucherCode", payment.getMethod());
@@ -45,7 +45,7 @@ public class PaymentTest{
         Map<String, String> newData = new HashMap<>();
         newData.put("voucherCode", "MEOW");
         Payment payment = new Payment("eb558e9f-1c39-460e-8860-71af6af63bd6", "voucherCode", newData, "REJECTED");
-        payment.setStatus("REJECTED");
+        payment.setPaymentStatus("REJECTED");
         assertEquals("eb558e9f-1c39-460e-8860-71af6af63bd6", payment.getId());
         assertNotEquals("ESHOP1234ABC5678", newData.get("voucherCode"));
         assertEquals("voucherCode", payment.getMethod());
