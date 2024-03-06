@@ -50,6 +50,29 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentRepository.findAll();
     }
 
+    public String validateVoucherCode(String voucherCode) {
+        if (isValidVoucherCode(voucherCode)) {
+            return "SUCCESS";
+        } else {
+            return "REJECTED";
+        }
+    }
+
+    private boolean isValidVoucherCode(String voucherCode) {
+        if (voucherCode == null || voucherCode.length() != 16 || !voucherCode.startsWith("ESHOP")) {
+            return false;
+        }
+
+        int digitCount = 0;
+        for (int i = 5; i < voucherCode.length(); i++) {
+            if (Character.isDigit(voucherCode.charAt(i))) {
+                digitCount++;
+            }
+        }
+
+        return digitCount >= 8;
+    }
+
 
 
 }
