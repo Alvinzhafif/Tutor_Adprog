@@ -41,20 +41,20 @@ public class PaymentServiceImplTest {
     @Test
     void testCreatePayment() {
         Payment payment = payments.get(1);
-        doReturn(payment).when(paymentRepository).save(payment);
+        doReturn(payment).when(paymentRepository).savePayment(payment);
 
         Payment result = paymentService.createPayment(payment);
-        verify(paymentRepository, times(1)).save(payment);
+        verify(paymentRepository, times(1)).savePayment(payment);
         assertEquals(payment.getId(), result.getId());
     }
 
     @Test
     void testCreatePaymentIfAlreadyExist() {
         Payment payment = payments.get(1);
-        doReturn(payment).when(paymentRepository).findById(payment.getId());
+        doReturn(payment).when(paymentRepository).findPaymentById(payment.getId());
 
         assertNull(paymentService.createPayment(payment));
-        verify(paymentRepository, times(0)).save(payment);
+        verify(paymentRepository, times(0)).savePayment(payment);
     }
 
     @Test
@@ -62,13 +62,13 @@ public class PaymentServiceImplTest {
         assertThrows(IllegalArgumentException.class,
                 () -> paymentService.updateStatus("paymentId", "MEOW"));
 
-        verify(paymentRepository, never()).save(any(Payment.class));
+        verify(paymentRepository, never()).savePayment(any(Payment.class));
     }
 
 
     @Test
     void testUpdateStatusInvalidPaymentId() {
-        doReturn(null).when(paymentRepository).findById("zczc");
+        doReturn(null).when(paymentRepository).findPaymentById("zczc");
 
         assertThrows(IllegalArgumentException.class,
                 () -> paymentService.updateStatus("zczc", "SUCCESS"));
@@ -80,14 +80,14 @@ public class PaymentServiceImplTest {
         String paymentId = "1";
         String status = "SUCCESS";
         Payment payment = new Payment(paymentId, "voucherCode", null, null);
-        doReturn(payment).when(paymentRepository).findById(paymentId);
+        doReturn(payment).when(paymentRepository).findPaymentById(paymentId);
 
 
         paymentService.updateStatus(paymentId, status);
 
 
         assertEquals(status, payment.getStatus());
-        verify(paymentRepository, times(1)).save(payment);
+        verify(paymentRepository, times(1)).savePayment(payment);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class PaymentServiceImplTest {
 
         String paymentId = "1";
         String status = "SUCCESS";
-        doReturn(null).when(paymentRepository).findById(paymentId);
+        doReturn(null).when(paymentRepository).findPaymentById(paymentId);
 
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -103,13 +103,13 @@ public class PaymentServiceImplTest {
         });
 
         assertEquals("Payment not found with id: " + paymentId, exception.getMessage());
-        verify(paymentRepository, never()).save(any());
+        verify(paymentRepository, never()).savePayment(any());
     }
 
     @Test
     void testFindByIdIfIdFound() {
         Payment payment = payments.get(1);
-        doReturn(payment).when(paymentRepository).findById(payment.getId());
+        doReturn(payment).when(paymentRepository).findPaymentById(payment.getId());
 
         Payment result = paymentService.findById(payment.getId());
         assertEquals(payment.getId(), result.getId());
@@ -117,7 +117,7 @@ public class PaymentServiceImplTest {
 
     @Test
     void testFindByIdIfIdNotFound() {
-        doReturn(null).when(paymentRepository).findById("zczc");
+        doReturn(null).when(paymentRepository).findPaymentById("zczc");
         assertNull(paymentService.findById("zczc"));
     }
 

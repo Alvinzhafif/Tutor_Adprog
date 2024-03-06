@@ -14,16 +14,16 @@ public class PaymentRepository {
         this.paymentMap = new HashMap<>();
     }
 
-    public Payment save(Payment payment) {
+    public Payment savePayment(Payment payment) {
         paymentMap.put(payment.getId(), payment);
         return payment;
     }
 
-    public Payment findById(String id) {
+    public Payment findPaymentById(String id) {
         return paymentMap.get(id);
     }
 
-    public List<Payment> findAll() {
+    public List<Payment> findAllPayments() {
         return new ArrayList<>(paymentMap.values());
     }
 }

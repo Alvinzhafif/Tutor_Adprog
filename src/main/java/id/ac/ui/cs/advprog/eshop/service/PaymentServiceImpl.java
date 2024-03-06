@@ -16,8 +16,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment createPayment(Payment payment) {
-        if (paymentRepository.findById(payment.getId()) == null) {
-            return paymentRepository.save(payment);
+        if (paymentRepository.findPaymentById(payment.getId()) == null) {
+            return paymentRepository.savePayment(payment);
         }
         return null;
     }
@@ -28,10 +28,10 @@ public class PaymentServiceImpl implements PaymentService {
             throw new IllegalArgumentException("Invalid status: " + status);
         }
 
-        Payment payment = paymentRepository.findById(paymentId);
+        Payment payment = paymentRepository.findPaymentById(paymentId);
         if (payment != null) {
             payment.setPaymentStatus(status);
-            paymentRepository.save(payment);
+            paymentRepository.savePayment(payment);
         } else {
             throw new IllegalArgumentException("Payment not found with id: " + paymentId);
         }
@@ -43,12 +43,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment findById(String paymentId) {
-        return paymentRepository.findById(paymentId);
+        return paymentRepository.findPaymentById(paymentId);
     }
 
     @Override
     public List<Payment> findAll() {
-        return paymentRepository.findAll();
+        return paymentRepository.findAllPayments();
     }
 
     public String validateVoucherCode(String voucherCode) {

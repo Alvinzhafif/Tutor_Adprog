@@ -36,9 +36,9 @@ public class PaymentRepositoryTest {
     @Test
     void testSaveCreate() {
         Payment payment = payments.get(1);
-        Payment result = paymentRepository.save(payment);
+        Payment result = paymentRepository.savePayment(payment);
 
-        Payment findResult = paymentRepository.findById(payments.get(1).getId());
+        Payment findResult = paymentRepository.findPaymentById(payments.get(1).getId());
         assertEquals(payment.getId(), result.getId());
         assertEquals(payment.getId(), findResult.getId());
         assertEquals(payment.getPaymentData(), findResult.getPaymentData());
@@ -49,11 +49,11 @@ public class PaymentRepositoryTest {
     @Test
     void testSaveUpdate() {
         Payment payment = payments.get(1);
-        paymentRepository.save(payment);
+        paymentRepository.savePayment(payment);
         Payment newPayment = new Payment(payment.getId(), payment.getMethod(), payment.getPaymentData(), payment.getStatus());
-        Payment result = paymentRepository.save(newPayment);
+        Payment result = paymentRepository.savePayment(newPayment);
 
-        Payment findResult = paymentRepository.findById(payments.get(1).getId());
+        Payment findResult = paymentRepository.findPaymentById(payments.get(1).getId());
         assertEquals(payment.getId(), result.getId());
         assertEquals(payment.getId(), findResult.getId());
         assertEquals(payment.getMethod(), findResult.getMethod());
@@ -64,10 +64,10 @@ public class PaymentRepositoryTest {
     @Test
     void testFindByIdIfIdFound() {
         for(Payment payment: payments){
-            paymentRepository.save(payment);
+            paymentRepository.savePayment(payment);
         }
 
-        Payment findResult = paymentRepository.findById(payments.get(1).getId());
+        Payment findResult = paymentRepository.findPaymentById(payments.get(1).getId());
         assertEquals(payments.get(1).getId(), findResult.getId());
         assertEquals(payments.get(1).getMethod(), findResult.getMethod());
         assertEquals(payments.get(1).getPaymentData(), findResult.getPaymentData());
@@ -77,10 +77,10 @@ public class PaymentRepositoryTest {
     @Test
     void testFindByIdIfIdNotFound() {
         for(Payment payment: payments){
-            paymentRepository.save(payment);
+            paymentRepository.savePayment(payment);
         }
 
-        Payment findResult = paymentRepository.findById("MEOW");
+        Payment findResult = paymentRepository.findPaymentById("MEOW");
         assertNull(findResult);
 
 
@@ -89,10 +89,10 @@ public class PaymentRepositoryTest {
     @Test
     void testFindAll() {
         for(Payment payment: payments){
-            paymentRepository.save(payment);
+            paymentRepository.savePayment(payment);
         }
 
-        List<Payment> paymentList = paymentRepository.findAll();
+        List<Payment> paymentList = paymentRepository.findAllPayments();
         assertEquals(3, paymentList.size());
     }
 }
