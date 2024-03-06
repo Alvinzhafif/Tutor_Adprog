@@ -30,7 +30,7 @@ public class PayByVoucherTest{
         paymentData.put("voucherCode", voucherCode);
         Payment payment = new Payment("1", "voucherCode", paymentData, "SUCCESS");
 
-        String status = paymentService.validateVoucherCode(payment.getPaymentData().get("voucherCode"));
+        String status = paymentService.validatePaymentVoucherCode(payment.getPaymentData().get("voucherCode"));
 
         assertEquals("SUCCESS", status);
     }
@@ -43,7 +43,7 @@ public class PayByVoucherTest{
         paymentData.put("voucherCode", voucherCode);
         Payment payment = new Payment("2", "voucherCode", paymentData, "SUCCESS");
 
-        String status = paymentService.validateVoucherCode(payment.getPaymentData().get("voucherCode"));
+        String status = paymentService.validatePaymentVoucherCode(payment.getPaymentData().get("voucherCode"));
 
         assertEquals("REJECTED", status);
     }
@@ -55,7 +55,7 @@ public class PayByVoucherTest{
         paymentData.put("voucherCode", voucherCode);
         Payment payment = new Payment("1", "voucherCode", paymentData, "SUCCESS");
 
-        String status = paymentService.validateVoucherCode(payment.getPaymentData().get("voucherCode"));
+        String status = paymentService.validatePaymentVoucherCode(payment.getPaymentData().get("voucherCode"));
 
         assertEquals("REJECTED", status);
     }

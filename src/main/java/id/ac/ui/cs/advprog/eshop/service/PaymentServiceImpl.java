@@ -24,7 +24,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void updateStatus(String paymentId, String status) {
-        if (!isValidStatus(status)) {
+        if (!isPaymentValid(status)) {
             throw new IllegalArgumentException("Invalid status: " + status);
         }
 
@@ -37,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
         }
     }
 
-    private boolean isValidStatus(String status) {
+    private boolean isPaymentValid(String status) {
         return status != null && (status.equals("SUCCESS") || status.equals("REJECTED"));
     }
 
@@ -51,15 +51,15 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentRepository.findAllPayments();
     }
 
-    public String validateVoucherCode(String voucherCode) {
-        if (isValidVoucherCode(voucherCode)) {
+    public String validatePaymentVoucherCode(String voucherCode) {
+        if (isValidPaymentVoucherCode(voucherCode)) {
             return "SUCCESS";
         } else {
             return "REJECTED";
         }
     }
 
-    private boolean isValidVoucherCode(String voucherCode) {
+    private boolean isValidPaymentVoucherCode(String voucherCode) {
         if (voucherCode == null || voucherCode.length() != 16 || !voucherCode.startsWith("ESHOP")) {
             return false;
         }
