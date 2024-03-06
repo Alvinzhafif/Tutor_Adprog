@@ -74,6 +74,13 @@ public class PaymentServiceImpl implements PaymentService {
         return digitCount >= 8;
     }
 
+    public boolean isBankTransferPaymentValid(Map<String, String> paymentData) {
+        String bankName = paymentData.get("bankName");
+        String referenceCode = paymentData.get("referenceCode");
+
+        return bankName != null && !bankName.isEmpty() &&
+                referenceCode != null && !referenceCode.isEmpty();
+    }
 
 
 
