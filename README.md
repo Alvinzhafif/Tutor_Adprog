@@ -64,6 +64,8 @@ But, it should come to mind that the number of tests for the class should cover 
 
 <hr>
 1. Reflect Based on Percival
+<br>
+
 **Do I have enough functional tests to reassure myself that my application really works, from the point of view of the user?**
 <br>
 <br>
