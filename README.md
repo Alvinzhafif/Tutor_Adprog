@@ -63,8 +63,8 @@ But, it should come to mind that the number of tests for the class should cover 
 ### Reflection 1
 
 <hr>
-
-1. **Do I have enough functional tests to reassure myself that my application really works, from the point of view of the user?**
+1. Reflect Based on Percival
+**Do I have enough functional tests to reassure myself that my application really works, from the point of view of the user?**
 <br>
 <br>
 The answer is no. For this test series as a matter of fact, there are no functional tests. Hence, all tests are in a form of a simulation for the program itself. Due to the test not being a functional test, there is no clear signs that the application will work perfectly in the user's prespective. In the near future, perhaps it's best to implement the controller and web page of the class so it's functionality can actually be tested.
