@@ -49,4 +49,7 @@ public class PaymentServiceImpl implements PaymentService {
     public List<Payment> findAll() {
         return paymentRepository.findAll();
     }
+
+
+
 }
