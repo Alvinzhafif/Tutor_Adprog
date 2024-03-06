@@ -123,9 +123,6 @@ No not really, the tests are evenly distributed and all the tests should be fini
 <br>
 
 2. **Has my unit tests implemented F.I.R.S.T.?**
-
-<br>
-
 **F) Fast**
 <br>
 Yes, it should not take more than 6 seconds to successfully run all test cases that I made.
